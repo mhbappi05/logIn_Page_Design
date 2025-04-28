@@ -1,0 +1,333 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+
+.icon-bg i,
+.fa-solid,
+.fas {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  speak: none;
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+
+body {
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: #0f172a;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #fff;
+}
+
+/* ANIMATIONS */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shine {
+  from {
+    left: -50%;
+  }
+
+  to {
+    left: 150%;
+  }
+}
+
+@keyframes dotBounce {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+/* BACKGROUND PANELS */
+.shape-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(135deg, #1e293b 30%, #0f172a 70%);
+  clip-path: polygon(0 0, 80% 0, 30% 100%, 0 100%);
+  z-index: 1;
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.shape-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.1);
+  clip-path: polygon(20% 0, 100% 0, 85% 100%, 0 100%);
+  z-index: 1;
+  animation: slideUp 1s ease-out .5s forwards;
+}
+
+/*NAVBAR */
+.nav-sub {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  z-index: 5;
+}
+
+.icon-circle-sm {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-right: 16px;
+}
+
+.menu-sub {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 400;
+  margin-right: auto;
+}
+
+.menu-sub li {
+  position: relative;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+.menu-sub li::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #3a7ee6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s;
+}
+
+.menu-sub li:hover {
+  color: #3a7ee6;
+}
+
+.menu-sub li:hover::after {
+  transform: scaleX(1);
+}
+
+.sub-right {
+  display: flex;
+  gap: 24px;
+  font-size: .9rem;
+  color: #fff;
+}
+
+/* LOGIN-CARD */
+.login-card {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  width: 800px;
+  height: 500px;
+  background: linear-gradient(135deg, #1e293b 30%, #0f172a 70%);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  animation: fadeInUp .8s ease-out 1s forwards;
+  margin-top: 50px;
+  /* sits below navbar */
+
+}
+
+/* LEFT IMAGE PANEL */
+.card-image {
+  flex: 1;
+  background:
+    #e5efff url("https://i.pinimg.com/236x/b7/e6/9e/b7e69e008e5c51b89005a1ee769bc279.jpg") center/cover no-repeat;
+}
+
+/* EXISTING FORM STYLES */
+.login-form {
+  flex: 1;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin: 16px;
+  transition: all .3s;
+}
+
+.icon-bg {
+  width: 42px;
+  height: 42px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  color: #fff;
+  font-size: 1.1rem;
+  transition: background .3s;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 4px;
+  background: #f2f2f2;
+  font-size: .95rem;
+  color: #333;
+  outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background .3s, color .3s;
+}
+
+.input-group:focus-within .icon-bg {
+  background: #2150ae;
+}
+
+.input-group input:focus {
+  background: #fff;
+  color: #0f172a;
+}
+
+.btn-login {
+  position: relative;
+  width: 50%;
+  padding: 12px;
+  margin-top: 20px;
+  background: linear-gradient(180deg, #3a7ee6, #2150ae);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(33, 80, 174, 0.5);
+  overflow: hidden;
+}
+
+.btn-login::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-25deg);
+}
+
+.btn-login:hover::after {
+  animation: shine .8s ease-out;
+}
+
+.dots,
+.dots.small {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dots {
+  margin-top: 24px;
+}
+
+.dots.small {
+  margin-top: 12px;
+}
+
+.dots span {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: dotBounce 1.5s ease-in-out infinite;
+  animation-delay: calc(var(--i)*.2s);
+}
+
+.dots span.active {
+  background: #fff;
+}
+
+/* Weather widget */
+.weather-info {
+  width: 80%;
+  margin: 0 auto 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+.weather-info .location {
+  font-weight: 500;
+}
+.weather-info .temp {
+  font-weight: 700;
+}

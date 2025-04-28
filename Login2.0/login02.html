@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login with Illustration</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-pb/M+WufciYjLaWp50YWkI3j4+rgjEJqJo4PHhZcBkSHV3igp3j4pK4aAjaTdInuAdJ+rE//TQuxwNZ4j3G6EA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Your styles -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- animated background panels -->
+    <div class="shape-left"></div>
+    <div class="shape-bottom-right"></div>
+
+    <!-- dark sub-navbar -->
+    <nav class="nav-sub">
+        <div class="icon-circle-sm"><i class="fa-solid fa-chevron-right"></i></div>
+        <ul class="menu-sub">
+          <li class="active">Hello World</li>
+            <li>Home</li>
+            <li>About</li>
+        </ul>
+        <div class="sub-right">
+            <span>Login</span>
+            <span>SignUp</span>
+        </div>
+    </nav>
+
+    
+    <!-- combined card: left image + right form -->
+    <div class="login-card">
+        
+        <!-- was: <div class="card-image"></div> -->
+        <div class="card-image"></div>
+
+        <div class="login-form">
+            <div class="weather-info">
+                <span class="location">Detecting…</span>
+                <span class="temp">--°C</span>
+              </div>
+              
+        
+            <h2 class="form-title">Sign In</h2>
+            <p class="form-subtitle">Unlock your world.</p>
+            
+            <div class="input-group">
+              <div class="icon-bg"><i class="fa-solid fa-envelope"></i></div>
+              <input type="email" placeholder="Email" />
+          </div>
+            <div class="input-group">
+                <div class="icon-bg"><i class="fa-solid fa-lock"></i></div>
+                <input type="password" placeholder="Password" />
+            </div>
+
+            <button class="btn-login">Login Now</button>
+
+            <div class="dots">
+                <span style="--i:0" class="active"></span>
+                <span style="--i:1"></span>
+                <span style="--i:2"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const locEl  = document.querySelector('.weather-info .location');
+          const tempEl = document.querySelector('.weather-info .temp');
+        
+          if (!navigator.geolocation) {
+            locEl.textContent = 'Geo not supported';
+            return;
+          }
+        
+          navigator.geolocation.getCurrentPosition(async pos => {
+            const { latitude, longitude } = pos.coords;
+        
+            try {
+              // 1) Fetch current weather (°C) from Open-Meteo
+              const weatherRes = await fetch(
+                `https://api.open-meteo.com/v1/forecast?latitude=${latitude}` +
+                `&longitude=${longitude}&current_weather=true`
+              );
+              const weatherData = await weatherRes.json();
+              tempEl.textContent = `${Math.round(weatherData.current_weather.temperature)}°C`;
+        
+              // 2) Reverse‐geocode to get a place name from Nominatim
+              const geoRes = await fetch(
+                `https://nominatim.openstreetmap.org/reverse?lat=${latitude}` +
+                `&lon=${longitude}&format=json&zoom=10`
+              );
+              const geoData = await geoRes.json();
+              locEl.textContent = geoData.address.city 
+                                || geoData.address.town 
+                                || geoData.address.village 
+                                || geoData.address.county 
+                                || 'Unknown';
+            } catch (err) {
+              locEl.textContent = 'Lookup error';
+              tempEl.textContent = '--°C';
+              console.error(err);
+            }
+          }, err => {
+            locEl.textContent = 'Permission denied';
+            tempEl.textContent = '--°C';
+          });
+        });
+        </script>
+        
+      
+</body>
+
+</html>
