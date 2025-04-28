@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Aurora Background */
+body::before, body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(0,255,255,0.2) 0%, transparent 60%) no-repeat,
+                radial-gradient(ellipse at center, rgba(255,0,255,0.2) 0%, transparent 60%) no-repeat,
+                radial-gradient(ellipse at center, rgba(0,255,0,0.15) 0%, transparent 60%) no-repeat;
+    background-size: 100% 100%;
+    mix-blend-mode: screen;
+    animation: moveAurora 60s linear infinite alternate;
+    z-index: 0;
+    filter: blur(80px);
+  }
+  
+  body::after {
+    animation-direction: alternate-reverse;
+  }
+  
+  @keyframes moveAurora {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-10%, -10%) rotate(10deg); }
+    100% { transform: translate(10%, 10%) rotate(-10deg); }
+  }
+  
+  
+  /* Canvas for stars */
+  #stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+  /* Login container */
+  .login-container {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 50px 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.6), 0 0 80px rgba(255, 0, 255, 0.5);
+    text-align: center;
+    z-index: 2;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  /* Form */
+  .login-form h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  .login-form input::placeholder {
+    color: #e0e0e0;
+  }
+  
+  .login-form button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #00ffff, #ff00ff);
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .login-form button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Signup link */
+  .signup-link {
+    margin-top: 20px;
+    color: #ffffff;
+  }
+  
+  .signup-link a {
+    color: #00ffff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
