@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRAGO Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Instruction</a>
+        <a href="#">Color Engage</a>
+    </div>
+
+    <div class="clock" id="clock"></div>
+
+    <div class="container">
+        <div class="left">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                HELLO WORLD
+            </div>
+            <div class="profile-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#1e293b" width="50" height="50">
+                    <path
+                        d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z" />
+                </svg>
+            </div>
+            <h2>Let's code together, <br>learn together and grow together.</h2>
+            <p>Subscribe the channel for new videos!</p>
+            <button>Observe Policy Allow</button>
+            <div class="dots">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="divider-line">
+            <svg viewBox="0 0 100 500" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#fbbf24" />
+                        <stop offset="50%" stop-color="#0ea5e9" />
+                        <stop offset="100%" stop-color="#ef4444" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <div class="right">
+            <form>
+                <input type="text" placeholder="User name or email">
+                <input type="password" placeholder="password">
+                <input type="password" placeholder="Confirm password">
+                <button type="submit" class="primary-btn">Log in</button>
+                <button type="button" class="secondary-btn">Sign In New Acc</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+
+</body>
+</html>

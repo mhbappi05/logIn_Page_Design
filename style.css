@@ -1,0 +1,309 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at center, #0f172a 0%, #1e293b 70%, #0f172a 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background particles */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.08;
+    z-index: 0;
+    animation: moveParticles 60s linear infinite;
+}
+
+@keyframes moveParticles {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 1000px 1000px;
+    }
+}
+
+.navbar {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    display: flex;
+    gap: 20px;
+    z-index: 2;
+}
+
+.navbar a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #fff;
+}
+
+.clock {
+    position: absolute;
+    top: calc(50% - 300px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    color: #00f0ff;
+    text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+    font-weight: bold;
+    animation: glow 1.5s infinite alternate;
+    z-index: 10;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff;
+    }
+
+    to {
+        text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+    }
+}
+
+
+.container {
+    width: 900px;
+    height: 500px;
+    background: #0f172a;
+    border-radius: 10px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.left {
+    width: 40%;
+    background: #1e293b;
+    padding: 50px 30px 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
+    animation: slideInLeft 1s ease;
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #f59e0b;
+    margin-bottom: 20px;
+}
+
+.logo-icon {
+    width: 22px;
+    height: 22px;
+    background: #f59e0b;
+    border-radius: 50%;
+}
+
+.profile-icon {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: #1e293b;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.left h2 {
+    color: white;
+    font-size: 15px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.left p {
+    color: #94a3b8;
+    font-size: 13px;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+.left button {
+    background: #f6573b;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    margin-bottom: 30px;
+}
+
+.left button:hover {
+    background: #ea580c;
+    transform: scale(1.05);
+}
+
+.dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.dots span {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    opacity: 0.4;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.dots span.active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.right {
+    width: 60%;
+    background: #1e293b;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: slideInRight 1s ease;
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form input {
+    background: #f8fafc;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #0f172a;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s;
+}
+
+form input:focus {
+    box-shadow: 0 0 28px rgba(0, 159, 180, 0.8);
+    outline: none;
+}
+
+.primary-btn {
+    background: #f6573b;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.primary-btn:hover {
+    background: #a1371a;
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid #3bd4f6;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.secondary-btn:hover {
+    background: #196f80;
+    color: white;
+    transform: translateY(-2px);
+}
