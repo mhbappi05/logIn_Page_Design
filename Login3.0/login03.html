@@ -9,6 +9,12 @@
 </head>
 
 <body>
+    <!-- Full page invisible clickable area -->
+  <div id="click-catcher"></div>
+
+  <!-- Small visible clickable text in bottom right -->
+  <div id="click-text">Click anywhere to feel the music</div>
+
     <canvas id="stars"></canvas>
 
     <div class="login-container">
@@ -18,10 +24,11 @@
             <input type="password" placeholder="Password" required>
             <button type="submit">Launch</button>
             <p class="signup-link">Not a member? <a href="#">Join Now</a></p>
+
         </form>
     </div>
 
-    <audio id="bg-music" loop></audio>
+    <audio id="bg-music" loop preload="auto"></audio>
 
     <script src="stars.js"></script>
     <script src="music.js"></script>

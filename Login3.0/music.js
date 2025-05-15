@@ -1,19 +1,24 @@
 const bgMusic = document.getElementById('bg-music');
+    bgMusic.src = 'music.mp3'; // Ensure correct path
 
-// Set the working music source
-bgMusic.src = 'https://soundcloud.com/chriscollinsiscreative/cosmic-harmony';
+    const catcher = document.getElementById('click-catcher');
+    const clickText = document.getElementById('click-text');
 
-// Wait for user interaction (click or touch) to start music
-function startMusic() {
-  bgMusic.play().catch(e => {
-    console.log("Music play failed:", e);
-  });
+    function startMusic() {
+      bgMusic.play()
+        .then(() => {
+          console.log('Music started playing');
+          catcher.style.display = 'none'; // Remove full page click catcher
+          clickText.style.display = 'none'; // Hide the text prompt
+        })
+        .catch(e => {
+          console.log('Music play failed:', e);
+          alert('Failed to play music. Please try clicking again.');
+        });
 
-  // Remove listener after playing
-  document.removeEventListener('click', startMusic);
-  document.removeEventListener('touchstart', startMusic);
-}
+      catcher.removeEventListener('click', startMusic);
+      clickText.removeEventListener('click', startMusic);
+    }
 
-// Listen for interaction
-document.addEventListener('click', startMusic);
-document.addEventListener('touchstart', startMusic);
+    catcher.addEventListener('click', startMusic);
+    clickText.addEventListener('click', startMusic);
