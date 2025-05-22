@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Crazy Panda Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- floating blobs -->
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+
+    <div class="container">
+        <div class="panda" id="panda">
+            <div class="ear left"></div>
+            <div class="ear right"></div>
+            <div class="head">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+                <div class="cheek left"></div>
+                <div class="cheek right"></div>
+                <div class="nose"></div>
+                <div class="mouth"></div>
+            </div>
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+        </div>
+
+        <div class="card">
+            <label for="username">Username:</label>
+            <input id="username" type="text" placeholder="Enter your username…" />
+
+            <label for="password">Password:</label>
+            <input id="password" type="password" placeholder="••••••••" />
+
+            <button>LOGIN</button>
+
+            <div class="paw left">
+                <div class="toe"></div>
+                <div class="toe"></div>
+                <div class="toe"></div>
+                <div class="pad"></div>
+            </div>
+            <div class="paw right">
+                <div class="toe"></div>
+                <div class="toe"></div>
+                <div class="toe"></div>
+                <div class="pad"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const panda = document.getElementById('panda');
+        const pwd = document.getElementById('password');
+        pwd.addEventListener('focus', () => panda.classList.add('cover'));
+        pwd.addEventListener('blur', () => panda.classList.remove('cover'));
+    </script>
+</body>
+
+</html>

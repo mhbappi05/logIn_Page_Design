@@ -1,0 +1,604 @@
+:root {
+    --bg1: #ff6ec4;
+    --bg2: #7873f5;
+    --bg3: #4ade80;
+    --card-bg: rgba(255, 255, 255, 0.15);
+    --neon: #00fff0;
+    --input-line: #fff;
+}
+
+/* reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, var(--bg1), var(--bg2), var(--bg3));
+    background-size: 600% 600%;
+    animation: bg-shift 12s ease infinite;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+/* floating blobs */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: float 8s ease-in-out infinite;
+    mix-blend-mode: screen;
+}
+
+.blob:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    background: var(--bg1);
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.blob:nth-child(2) {
+    width: 200px;
+    height: 200px;
+    background: var(--bg2);
+    top: 30%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+.blob:nth-child(3) {
+    width: 250px;
+    height: 250px;
+    background: var(--bg3);
+    bottom: 15%;
+    left: 20%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-20px) scale(1.1);
+    }
+}
+
+@keyframes bg-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* card */
+.container {
+    position: relative;
+    width: 340px;
+}
+
+.card {
+    position: relative;
+    padding: 100px 24px 50px;
+    border-radius: 20px;
+    background: var(--card-bg);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    animation: glow-border 3s ease infinite;
+}
+
+@keyframes glow-border {
+    0% {
+        border-color: var(--bg1);
+    }
+
+    33% {
+        border-color: var(--bg2);
+    }
+
+    66% {
+        border-color: var(--bg3);
+    }
+
+    100% {
+        border-color: var(--bg1);
+    }
+}
+
+.card label {
+    display: block;
+    margin-top: 16px;
+    color: #fff;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.card input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--input-line);
+    padding: 8px 0;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.card input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.card input:focus {
+    border-color: var(--neon);
+    transform: scale(1.02);
+}
+
+.card button {
+    width: 100%;
+    margin-top: 24px;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+    background: linear-gradient(90deg, var(--bg3), var(--bg1));
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--neon);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--neon);
+}
+
+/* panda */
+.panda {
+    position: absolute;
+    top: -60px;
+    left: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    filter: hue-rotate(20deg);
+    animation: panda-bounce 4s ease infinite;
+}
+
+@keyframes panda-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.panda .ear,
+.panda .eye,
+.panda .arm,
+.paw .pad,
+.paw .toe {
+    transition: all 0.3s ease;
+}
+
+/* blinking eyes */
+.panda .eye::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    transform-origin: center center;
+    animation: blink 5s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    90%,
+    100% {
+        transform: scaleY(0);
+    }
+
+    91%,
+    95% {
+        transform: scaleY(1);
+    }
+}
+
+/* --- panda --- */
+.panda {
+    position: absolute;
+    top: -60px;
+    left: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    z-index: 2;
+}
+
+.panda .ear {
+    width: 24px;
+    height: 24px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+}
+
+.panda .ear.left {
+    left: 8px;
+}
+
+.panda .ear.right {
+    right: 8px;
+}
+
+.panda .head {
+    width: 100px;
+    height: 80px;
+    background: #fff;
+    border-radius: 50% 50% 45% 45%;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.panda .eye {
+    width: 20px;
+    height: 24px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+}
+
+.panda .eye.left {
+    left: 22px;
+}
+
+.panda .eye.right {
+    right: 22px;
+}
+
+.panda .eye::after {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    position: relative;
+    top: 4px;
+    left: 4px;
+}
+
+.panda .cheek {
+    width: 10px;
+    height: 10px;
+    background: #FFCCE6;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 16px;
+}
+
+.panda .cheek.left {
+    left: 20px;
+}
+
+.panda .cheek.right {
+    right: 20px;
+}
+
+.panda .nose {
+    width: 12px;
+    height: 8px;
+    background: #333;
+    border-radius: 50% 50% 60% 60%;
+    position: absolute;
+    top: Fifty px;
+    left: calc(50% - 6px);
+}
+
+.panda .mouth {
+    width: 24px;
+    height: 0;
+    border-bottom: 2px solid #333;
+    position: absolute;
+    top: 58px;
+    left: calc(50% - 12px);
+}
+
+/* --- arms on original --- */
+.panda .arm {
+    width: 28px;
+    height: 48px;
+    background: #333;
+    border-radius: 16px;
+    position: absolute;
+    top: 24px;
+    transition: all 0.3s ease;
+    transform-origin: top center;
+}
+
+.panda .arm.left {
+    left: -6px;
+    transform: rotate(30deg);
+}
+
+.panda .arm.right {
+    right: -6px;
+    transform: rotate(-30deg);
+}
+
+/* --- arms covering eyes --- */
+.panda.cover .arm.left {
+    top: 36px;
+    left: 10px;
+    transform: rotate(0deg) translate(0, -8px);
+    z-index: 3;
+}
+
+.panda.cover .arm.right {
+    top: 36px;
+    right: 10px;
+    transform: rotate(0deg) translate(0, -8px);
+    z-index: 3;
+}
+
+/* --- little paws at bottom --- */
+.paw {
+    position: absolute;
+    bottom: -14px;
+    width: 50px;
+    height: 40px;
+    z-index: 2;
+}
+
+.paw.left {
+    left: 60px;
+}
+
+.paw.right {
+    right: 60px;
+}
+
+.paw .pad {
+    width: 34px;
+    height: 20px;
+    background: #333;
+    border-radius: 50%/40%;
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+}
+
+.paw .toe {
+    width: 10px;
+    height: 10px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+}
+
+.paw .toe:nth-child(1) {
+    left: 4px;
+    top: -4px;
+}
+
+.paw .toe:nth-child(2) {
+    left: 18px;
+    top: -8px;
+}
+
+.paw .toe:nth-child(3) {
+    left: 32px;
+    top: -4px;
+}
+
+/* arms cover on focus */
+.panda.cover .arm.left {
+    top: 36px;
+    left: 10px;
+    transform: rotate(0) translate(0, -8px);
+    z-index: 3;
+}
+
+.panda.cover .arm.right {
+    top: 36px;
+    right: 10px;
+    transform: rotate(0) translate(0, -8px);
+    z-index: 3;
+}
+
+/* 3) When covering eyes, force them closed and stop the blink animation */
+.panda.cover .eye::before {
+    animation: none !important;
+    transform: scaleY(1) !important;
+}
+
+/* Make container scale down on smaller screens */
+@media (max-width: 400px) {
+    .container {
+        width: 90vw;
+        padding: 0 10px;
+    }
+
+    .card {
+        padding: 80px 16px 40px;
+    }
+
+    /* Shrink panda and reposition */
+    .panda {
+        width: 80px;
+        height: 80px;
+        top: -50px;
+        left: calc(50% - 40px);
+    }
+
+    /* Adjust panda features scale accordingly */
+    .panda .ear {
+        width: 20px;
+        height: 20px;
+        top: 0;
+    }
+
+    .panda .ear.left {
+        left: 6px;
+    }
+
+    .panda .ear.right {
+        right: 6px;
+    }
+
+    .panda .head {
+        width: 80px;
+        height: 65px;
+        top: 6px;
+        left: 0;
+    }
+
+    .panda .eye {
+        width: 16px;
+        height: 20px;
+        top: 25px;
+    }
+
+    .panda .eye.left {
+        left: 18px;
+    }
+
+    .panda .eye.right {
+        right: 18px;
+    }
+
+    .panda .cheek {
+        width: 8px;
+        height: 8px;
+        bottom: 14px;
+    }
+
+    .panda .cheek.left {
+        left: 16px;
+    }
+
+    .panda .cheek.right {
+        right: 16px;
+    }
+
+    .panda .nose {
+        width: 10px;
+        height: 6px;
+        top: 42px;
+        left: calc(50% - 5px);
+    }
+
+    .panda .mouth {
+        width: 20px;
+        top: 50px;
+        left: calc(50% - 10px);
+    }
+
+    /* Adjust arms */
+    .panda .arm {
+        width: 22px;
+        height: 38px;
+        top: 20px;
+    }
+
+    .panda .arm.left {
+        left: -5px;
+    }
+
+    .panda .arm.right {
+        right: -5px;
+    }
+
+    .panda.cover .arm.left {
+        top: 30px;
+        left: 8px;
+    }
+
+    .panda.cover .arm.right {
+        top: 30px;
+        right: 8px;
+    }
+
+    /* Adjust paws */
+    .paw {
+        width: 40px;
+        height: 32px;
+        bottom: -10px;
+    }
+
+    .paw.left {
+        left: 45px;
+    }
+
+    .paw.right {
+        right: 45px;
+    }
+
+    .paw .pad {
+        width: 28px;
+        height: 16px;
+        left: 6px;
+    }
+
+    .paw .toe {
+        width: 8px;
+        height: 8px;
+    }
+
+    .paw .toe:nth-child(1) {
+        left: 3px;
+        top: -3px;
+    }
+
+    .paw .toe:nth-child(2) {
+        left: 14px;
+        top: -6px;
+    }
+
+    .paw .toe:nth-child(3) {
+        left: 25px;
+        top: -3px;
+    }
+
+    /* Inputs & button font scaling */
+    .card input {
+        font-size: 0.9rem;
+    }
+
+    .card button {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+}
